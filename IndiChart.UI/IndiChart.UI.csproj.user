@@ -5,6 +5,9 @@
     <Compile Update="GraphView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="ReferenceLineManager.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="StateTimeline.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

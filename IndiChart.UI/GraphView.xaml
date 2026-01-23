@@ -8,12 +8,5 @@
              d:DesignHeight="300" d:DesignWidth="800">
     <Grid>
         <skia:SKElement Name="SkiaCanvas" PaintSurface="OnPaintSurface" />
-
-        <TextBlock Name="StatusText" 
-                   Text="Ready" 
-                   Foreground="Gray" 
-                   VerticalAlignment="Top" 
-                   HorizontalAlignment="Left" 
-                   Margin="10"/>
     </Grid>
 </UserControl>

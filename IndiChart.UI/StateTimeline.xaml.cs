@@ -62,14 +62,14 @@ namespace IndiChart.UI
                 canvas.DrawRect(new SKRect(x1, 0, x2, h), _fillPaint);
 
                 // 2. ציור הלייבל (טקסט)
-                // נצייר רק אם יש מספיק מקום (למשל יותר מ-20 פיקסלים)
-                if (x2 - x1 > 20)
+                // נצייר רק אם יש מספיק מקום (למשל יותר מ-4 פיקסלים)
+                if (x2 - x1 > 4)
                 {
                     string name = StateConfig.GetName(st.StateId);
                     float textWidth = _textPaint.MeasureText(name);
 
                     // בדיקה שהטקסט לא חורג מרוחב המלבן (אופציונלי - כדי לשמור על סדר)
-                    if (textWidth < (x2 - x1))
+                    if (textWidth < (x2 - x1) - 4)
                     {
                         float centerX = x1 + (x2 - x1) / 2;
                         float textX = centerX - textWidth / 2;
