@@ -34,3 +34,4 @@ C:\Users\yegudish\source\repos\IndiChartSuite\IndiChart.UI\obj\Debug\net8.0-wind
 C:\Users\yegudish\source\repos\IndiChartSuite\IndiChart.UI\obj\Debug\net8.0-windows\IndiChart.UI.pdb
 C:\Users\yegudish\source\repos\IndiChartSuite\IndiChart.UI\obj\Debug\net8.0-windows\IndiChart.UI.genruntimeconfig.cache
 C:\Users\yegudish\source\repos\IndiChartSuite\IndiChart.UI\obj\Debug\net8.0-windows\ref\IndiChart.UI.dll
+C:\Users\yegudish\source\repos\IndiChartSuite\IndiChart.UI\obj\Debug\net8.0-windows\IndiChart.UI.sourcelink.json

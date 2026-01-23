@@ -97,3 +97,4 @@ C:\Users\yegudish\source\repos\IndiChartSuite\IndiChart.Tests\obj\Debug\net8.0\r
 C:\Users\yegudish\source\repos\IndiChartSuite\IndiChart.Tests\obj\Debug\net8.0\IndiChart.Tests.pdb
 C:\Users\yegudish\source\repos\IndiChartSuite\IndiChart.Tests\obj\Debug\net8.0\IndiChart.Tests.genruntimeconfig.cache
 C:\Users\yegudish\source\repos\IndiChartSuite\IndiChart.Tests\obj\Debug\net8.0\ref\IndiChart.Tests.dll
+C:\Users\yegudish\source\repos\IndiChartSuite\IndiChart.Tests\obj\Debug\net8.0\IndiChart.Tests.sourcelink.json

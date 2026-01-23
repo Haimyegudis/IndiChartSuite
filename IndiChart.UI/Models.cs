@@ -31,10 +31,14 @@ namespace IndiChart.UI
     {
         private string _title;
         public string Title { get => _title; set { _title = value; OnPropertyChanged(nameof(Title)); } }
+
         public ObservableCollection<SignalSeries> Series { get; set; } = new ObservableCollection<SignalSeries>();
+        public ObservableCollection<double> Thresholds { get; set; } = new ObservableCollection<double>(); // פיצ'ר חדש: קווי גבול
+
         public List<StateInterval> States { get; set; }
         private bool _isSelected;
         public bool IsSelected { get => _isSelected; set { _isSelected = value; OnPropertyChanged(nameof(IsSelected)); } }
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string name) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
     }
@@ -50,6 +54,11 @@ namespace IndiChart.UI
     public struct StateInterval { public int StartIndex; public int EndIndex; public int StateId; }
 
     public class WorkspaceModel { public string SourceCsvPath { get; set; } public List<ChartSaveData> Charts { get; set; } = new List<ChartSaveData>(); }
-    public class ChartSaveData { public string Title { get; set; } public List<SeriesSaveData> Series { get; set; } = new List<SeriesSaveData>(); }
+    public class ChartSaveData
+    {
+        public string Title { get; set; }
+        public List<SeriesSaveData> Series { get; set; } = new List<SeriesSaveData>();
+        public List<double> Thresholds { get; set; } = new List<double>();
+    }
     public class SeriesSaveData { public string Name { get; set; } public string ColorHex { get; set; } public bool IsVisible { get; set; } public AxisType Axis { get; set; } }
 }

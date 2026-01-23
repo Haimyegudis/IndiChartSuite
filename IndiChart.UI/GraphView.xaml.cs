@@ -30,11 +30,17 @@ namespace IndiChart.UI
         private SKPaint _textPaintRight = new SKPaint { Color = SKColors.Navy, TextSize = 11, IsAntialias = true, Typeface = SKTypeface.FromFamilyName("Segoe UI", SKFontStyle.Bold) };
         private SKPaint _stateTextPaint = new SKPaint { Color = SKColors.Black, TextSize = 12, IsAntialias = true, Typeface = SKTypeface.FromFamilyName("Segoe UI", SKFontStyle.Bold) };
         private SKPaint _stateFillPaint = new SKPaint { Style = SKPaintStyle.Fill };
+
+        // סמנים וקווים
         private SKPaint _targetLinePaint = new SKPaint { Color = SKColors.Blue, StrokeWidth = 2, Style = SKPaintStyle.Stroke, IsAntialias = false };
+        private SKPaint _cursorLinePaint = new SKPaint { Color = SKColors.Red, StrokeWidth = 1.5f, Style = SKPaintStyle.Stroke, IsAntialias = false }; // סמן ניגון אדום
+        private SKPaint _thresholdPaint = new SKPaint { Color = SKColors.Red, StrokeWidth = 1, Style = SKPaintStyle.Stroke, PathEffect = SKPathEffect.CreateDash(new float[] { 10, 5 }, 0), IsAntialias = true }; // קו גבול מקווקו
+
         private SKPaint _measureFillPaint = new SKPaint { Color = SKColors.DodgerBlue.WithAlpha(40), Style = SKPaintStyle.Fill };
         private SKPaint _measureBorderPaint = new SKPaint { Color = SKColors.DodgerBlue, Style = SKPaintStyle.Stroke, StrokeWidth = 1, PathEffect = SKPathEffect.CreateDash(new float[] { 5, 5 }, 0) };
 
         private List<SignalSeries> _seriesList = new List<SignalSeries>();
+        private List<double> _thresholds = new List<double>();
         private List<StateInterval> _states;
 
         private int _viewStartIndex = 0;
@@ -61,6 +67,7 @@ namespace IndiChart.UI
         {
             if (vm == null) return;
             _seriesList = vm.Series.ToList();
+            _thresholds = vm.Thresholds.ToList();
             _states = vm.States;
             _totalDataLength = _seriesList.Any() ? _seriesList.Max(s => s.Data != null ? s.Data.Length : 0) : 0;
             if (_viewEndIndex == 0 && _totalDataLength > 0) { _viewStartIndex = 0; _viewEndIndex = _totalDataLength - 1; }
@@ -76,7 +83,13 @@ namespace IndiChart.UI
             _isSyncing = true; _viewStartIndex = Math.Clamp(start, 0, _totalDataLength - 1); _viewEndIndex = Math.Clamp(end, 0, _totalDataLength - 1);
             SkiaCanvas.InvalidateVisual(); _isSyncing = false;
         }
-        public void SyncCursor(int index) { _globalCursorIndex = index; UpdateLegendValues(index); SkiaCanvas.InvalidateVisual(); }
+
+        public void SyncCursor(int index)
+        {
+            _globalCursorIndex = index;
+            UpdateLegendValues(index);
+            SkiaCanvas.InvalidateVisual();
+        }
 
         private void UpdateLegendValues(int index)
         {
@@ -192,6 +205,20 @@ namespace IndiChart.UI
                 }
             }
 
+            // Draw Thresholds (קווי גבול אופקיים)
+            if (_thresholds != null)
+            {
+                foreach (var th in _thresholds)
+                {
+                    // מניחים שקו הגבול שייך לציר השמאלי
+                    if (th >= lDisplayMin && th <= (lDisplayMin + lRange))
+                    {
+                        float y = chartBottom - (float)((th - lDisplayMin) / lRange * chartH);
+                        canvas.DrawLine(chartLeft, y, chartRight, y, _thresholdPaint);
+                    }
+                }
+            }
+
             // Lines
             using (var paint = new SKPaint { Style = SKPaintStyle.Stroke, StrokeWidth = 1.5f, IsAntialias = true })
             using (var path = new SKPath())
@@ -199,6 +226,7 @@ namespace IndiChart.UI
                 canvas.Save(); canvas.ClipRect(new SKRect(chartLeft, chartTop, chartRight, chartBottom));
 
                 int drawLimit = end;
+                // תיקון למצב ניגון: מציגים עד הסמן הנוכחי
                 if (_isProgressiveMode && _globalCursorIndex != -1) drawLimit = Math.Min(end, _globalCursorIndex);
 
                 foreach (var s in _seriesList)
@@ -224,8 +252,20 @@ namespace IndiChart.UI
             float L = SnapToPixel(chartLeft), R = SnapToPixel(chartRight), B = SnapToPixel(chartBottom), T = SnapToPixel(chartTop);
             canvas.DrawLine(L, T, L, B, _axisLinePaint); if (hasRight) canvas.DrawLine(R, T, R, B, _axisLinePaint); canvas.DrawLine(L, B, R, B, _axisLinePaint);
 
-            // Target Line (Blue)
-            if (_targetLineIndex >= start && _targetLineIndex <= end) { float tx = SnapToPixel(chartLeft + (float)((_targetLineIndex - start) / (double)count * chartW)); canvas.DrawLine(tx, T, tx, B, _targetLinePaint); }
+            // Target Line (Blue) - Search Result
+            if (_targetLineIndex >= start && _targetLineIndex <= end)
+            {
+                float tx = SnapToPixel(chartLeft + (float)((_targetLineIndex - start) / (double)count * chartW));
+                canvas.DrawLine(tx, T, tx, B, _targetLinePaint);
+            }
+
+            // Cursor Line (Red) - Playback Position
+            // תיקון: ציור קו אדום שמראה איפה הנגן נמצא
+            if (_globalCursorIndex >= start && _globalCursorIndex <= end)
+            {
+                float cx = SnapToPixel(chartLeft + (float)((_globalCursorIndex - start) / (double)count * chartW));
+                canvas.DrawLine(cx, T, cx, B, _cursorLinePaint);
+            }
 
             // Measure
             if (_measureStartIndex != -1 && _measureCurrentIndex != -1)
