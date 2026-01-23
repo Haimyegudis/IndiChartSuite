@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="IndiChart.Core/IndiChart.Core.csproj" />
+  <Project Path="IndiChart.Tests/IndiChart.Tests.csproj" />
+  <Project Path="IndiChart.UI/IndiChart.UI.csproj" />
+</Solution>
