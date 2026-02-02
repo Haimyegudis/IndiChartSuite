@@ -95,6 +95,10 @@ namespace IndiChart.UI
         private bool _isSelected;
         public bool IsSelected { get => _isSelected; set { _isSelected = value; OnPropertyChanged(nameof(IsSelected)); } }
 
+        // Chart height for resizing
+        private double _chartHeight = 180;
+        public double ChartHeight { get => _chartHeight; set { _chartHeight = value; OnPropertyChanged(nameof(ChartHeight)); } }
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string name) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
     }

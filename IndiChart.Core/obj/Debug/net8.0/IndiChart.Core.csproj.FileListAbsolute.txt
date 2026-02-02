@@ -10,3 +10,6 @@ C:\Users\yegudish\source\repos\IndiChartSuite\IndiChart.Core\obj\Debug\net8.0\re
 C:\Users\yegudish\source\repos\IndiChartSuite\IndiChart.Core\obj\Debug\net8.0\IndiChart.Core.pdb
 C:\Users\yegudish\source\repos\IndiChartSuite\IndiChart.Core\obj\Debug\net8.0\ref\IndiChart.Core.dll
 C:\Users\yegudish\source\repos\IndiChartSuite\IndiChart.Core\obj\Debug\net8.0\IndiChart.Core.sourcelink.json
+C:\Users\yegudish\source\repos\IndiChartSuite\temp_build\IndiChart.Core.deps.json
+C:\Users\yegudish\source\repos\IndiChartSuite\temp_build\IndiChart.Core.dll
+C:\Users\yegudish\source\repos\IndiChartSuite\temp_build\IndiChart.Core.pdb

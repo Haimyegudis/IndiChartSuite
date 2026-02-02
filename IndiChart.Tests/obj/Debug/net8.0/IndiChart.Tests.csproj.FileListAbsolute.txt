@@ -98,3 +98,12 @@ C:\Users\yegudish\source\repos\IndiChartSuite\IndiChart.Tests\obj\Debug\net8.0\I
 C:\Users\yegudish\source\repos\IndiChartSuite\IndiChart.Tests\obj\Debug\net8.0\IndiChart.Tests.genruntimeconfig.cache
 C:\Users\yegudish\source\repos\IndiChartSuite\IndiChart.Tests\obj\Debug\net8.0\ref\IndiChart.Tests.dll
 C:\Users\yegudish\source\repos\IndiChartSuite\IndiChart.Tests\obj\Debug\net8.0\IndiChart.Tests.sourcelink.json
+C:\Users\yegudish\source\repos\IndiChartSuite\temp_build\testhost.dll
+C:\Users\yegudish\source\repos\IndiChartSuite\temp_build\testhost.exe
+C:\Users\yegudish\source\repos\IndiChartSuite\temp_build\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+C:\Users\yegudish\source\repos\IndiChartSuite\temp_build\xunit.runner.reporters.netcoreapp10.dll
+C:\Users\yegudish\source\repos\IndiChartSuite\temp_build\xunit.runner.utility.netcoreapp10.dll
+C:\Users\yegudish\source\repos\IndiChartSuite\temp_build\IndiChart.Tests.deps.json
+C:\Users\yegudish\source\repos\IndiChartSuite\temp_build\IndiChart.Tests.runtimeconfig.json
+C:\Users\yegudish\source\repos\IndiChartSuite\temp_build\IndiChart.Tests.dll
+C:\Users\yegudish\source\repos\IndiChartSuite\temp_build\IndiChart.Tests.pdb

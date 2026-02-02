@@ -47,6 +47,16 @@ namespace IndiChart.UI
             SKColors.Magenta, SKColors.SaddleBrown
         };
 
+        // Chart resize tracking
+        private bool _isResizingChart = false;
+        private ChartViewModel _resizingChart = null;
+        private double _resizeStartY = 0;
+        private double _resizeStartHeight = 0;
+
+        // Left panel collapse tracking
+        private bool _isLeftPanelCollapsed = false;
+        private double _leftPanelPreviousWidth = 280;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -908,5 +918,68 @@ namespace IndiChart.UI
         }
 
         private string GetTimeForIndex(int i) => _engine?.GetStringAt(i, 0) ?? i.ToString();
+
+        // Chart height resize handlers
+        private void ChartResizeGripper_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var border = sender as Border;
+            if (border?.Tag is ChartViewModel vm)
+            {
+                _isResizingChart = true;
+                _resizingChart = vm;
+                _resizeStartY = e.GetPosition(this).Y;
+                _resizeStartHeight = vm.ChartHeight;
+                border.CaptureMouse();
+                e.Handled = true;
+            }
+        }
+
+        private void ChartResizeGripper_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (_isResizingChart && _resizingChart != null)
+            {
+                double deltaY = e.GetPosition(this).Y - _resizeStartY;
+                double newHeight = _resizeStartHeight + deltaY;
+
+                // Constrain height between min and max values
+                newHeight = Math.Max(100, Math.Min(600, newHeight));
+                _resizingChart.ChartHeight = newHeight;
+                e.Handled = true;
+            }
+        }
+
+        private void ChartResizeGripper_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            if (_isResizingChart)
+            {
+                _isResizingChart = false;
+                _resizingChart = null;
+                var border = sender as Border;
+                border?.ReleaseMouseCapture();
+                e.Handled = true;
+            }
+        }
+
+        // Left panel collapse/expand handler
+        private void ToggleLeftPanel_Click(object sender, RoutedEventArgs e)
+        {
+            if (_isLeftPanelCollapsed)
+            {
+                // Expand panel
+                LeftPanelColumn.Width = new GridLength(_leftPanelPreviousWidth);
+                LeftPanelBorder.Visibility = Visibility.Visible;
+                CollapseButton.Content = "◀";
+                _isLeftPanelCollapsed = false;
+            }
+            else
+            {
+                // Collapse panel
+                _leftPanelPreviousWidth = LeftPanelColumn.Width.Value;
+                LeftPanelColumn.Width = new GridLength(0);
+                LeftPanelBorder.Visibility = Visibility.Collapsed;
+                CollapseButton.Content = "▶";
+                _isLeftPanelCollapsed = true;
+            }
+        }
     }
 }

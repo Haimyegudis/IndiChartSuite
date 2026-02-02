@@ -1,0 +1,371 @@
+<Window x:Class="IndiChart.UI.HelpWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="IndiChart Analytics Pro - Help"
+        Width="900" Height="600"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0" Background="#2196F3" Padding="20,15">
+            <StackPanel>
+                <TextBlock Text="IndiChart Analytics Pro"
+                           FontSize="24" FontWeight="Bold"
+                           Foreground="White" HorizontalAlignment="Center"/>
+                <TextBlock Text="Complete User Guide"
+                           FontSize="14"
+                           Foreground="White" HorizontalAlignment="Center"
+                           Margin="0,5,0,0"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Tab Control -->
+        <TabControl Grid.Row="1" Margin="10">
+            <!-- File Operations Tab -->
+            <TabItem Header="File Operations">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel Margin="20">
+                        <TextBlock FontSize="16" FontWeight="Bold" Margin="0,0,0,10">File Operations</TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,5,0,2">• Load CSV File (Ctrl+O):</TextBlock>
+                        <TextBlock Margin="15,0,0,10" TextWrapping="Wrap">
+                            Import data from CSV files. First row should contain column headers, subsequent rows contain data values.
+                        </TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,5,0,2">• Save Layout (Ctrl+S):</TextBlock>
+                        <TextBlock Margin="15,0,0,10" TextWrapping="Wrap">
+                            Save current workspace configuration including charts, signals, and their settings to a JSON file.
+                        </TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,5,0,2">• Load Layout:</TextBlock>
+                        <TextBlock Margin="15,0,0,10" TextWrapping="Wrap">
+                            Restore a previously saved workspace. If the original CSV file path is available, it will be loaded automatically.
+                        </TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,10,0,5">Tips:</TextBlock>
+                        <TextBlock Margin="15,0,0,5" TextWrapping="Wrap">• Time column should be first in CSV</TextBlock>
+                        <TextBlock Margin="15,0,0,5" TextWrapping="Wrap">• CSV headers become signal names</TextBlock>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+
+            <!-- Chart Management Tab -->
+            <TabItem Header="Chart Management">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel Margin="20">
+                        <TextBlock FontSize="16" FontWeight="Bold" Margin="0,0,0,10">Chart Management</TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,5,0,2">• Add Chart:</TextBlock>
+                        <TextBlock Margin="15,0,0,10" TextWrapping="Wrap">
+                            Create a new empty chart. Click on it to select it for signal additions.
+                        </TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,5,0,2">• Double-click signal:</TextBlock>
+                        <TextBlock Margin="15,0,0,10" TextWrapping="Wrap">
+                            Add the signal to the currently selected chart.
+                        </TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,5,0,2">• Close button (✖):</TextBlock>
+                        <TextBlock Margin="15,0,0,10" TextWrapping="Wrap">
+                            Remove a chart from the workspace.
+                        </TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,5,0,2">• Series checkbox:</TextBlock>
+                        <TextBlock Margin="15,0,0,10" TextWrapping="Wrap">
+                            Show/hide individual signals within a chart.
+                        </TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,5,0,2">• Axis button (L/R):</TextBlock>
+                        <TextBlock Margin="15,0,0,10" TextWrapping="Wrap">
+                            Switch signal between left and right Y-axis.
+                        </TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,10,0,5">Tips:</TextBlock>
+                        <TextBlock Margin="15,0,0,5" TextWrapping="Wrap">• Multiple charts can show the same signals</TextBlock>
+                        <TextBlock Margin="15,0,0,5" TextWrapping="Wrap">• Each chart supports left and right Y-axes</TextBlock>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+
+            <!-- Navigation Tab -->
+            <TabItem Header="Navigation &amp; Zoom">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel Margin="20">
+                        <TextBlock FontSize="16" FontWeight="Bold" Margin="0,0,0,10">Navigation &amp; Zoom</TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,5,0,2">• Mouse wheel:</TextBlock>
+                        <TextBlock Margin="15,0,0,10" TextWrapping="Wrap">
+                            Zoom in/out on charts at the current view position.
+                        </TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,5,0,2">• Click States window:</TextBlock>
+                        <TextBlock Margin="15,0,0,10" TextWrapping="Wrap">
+                            Jump to the time period of the clicked state.
+                        </TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,5,0,2">• Navigation slider:</TextBlock>
+                        <TextBlock Margin="15,0,0,10" TextWrapping="Wrap">
+                            Scroll through data horizontally across the entire dataset.
+                        </TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,5,0,2">• Arrow buttons:</TextBlock>
+                        <TextBlock Margin="15,0,0,10" TextWrapping="Wrap">
+                            Navigate left/right by 100 data points.
+                        </TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,5,0,2">• Keyboard arrows:</TextBlock>
+                        <TextBlock Margin="15,0,0,10" TextWrapping="Wrap">
+                            Navigate when slider is focused.
+                        </TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,5,0,2">• Ctrl+Left/Right:</TextBlock>
+                        <TextBlock Margin="15,0,0,10" TextWrapping="Wrap">
+                            Navigate directly from charts area.
+                        </TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,5,0,2">• Reset Zoom:</TextBlock>
+                        <TextBlock Margin="15,0,0,10" TextWrapping="Wrap">
+                            Return to full data view showing all points.
+                        </TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,5,0,2">• Jump to Line (Ctrl+G):</TextBlock>
+                        <TextBlock Margin="15,0,0,10" TextWrapping="Wrap">
+                            Go to a specific data index directly.
+                        </TextBlock>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+
+            <!-- Measurements Tab -->
+            <TabItem Header="Measurements">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel Margin="20">
+                        <TextBlock FontSize="16" FontWeight="Bold" Margin="0,0,0,10">Measurement Tools</TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,5,0,2">• Shift+Drag:</TextBlock>
+                        <TextBlock Margin="15,0,0,10" TextWrapping="Wrap">
+                            Measure an area on the chart. Shows average, minimum, maximum, and delta values for the selected range.
+                        </TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,5,0,2">• Ctrl+Click twice:</TextBlock>
+                        <TextBlock Margin="15,0,0,10" TextWrapping="Wrap">
+                            2-point measurement showing distance and values at both points.
+                        </TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,5,0,2">• Alt+Hover:</TextBlock>
+                        <TextBlock Margin="15,0,0,10" TextWrapping="Wrap">
+                            Show exact values at cursor position for all visible signals.
+                        </TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,5,0,2">• Escape:</TextBlock>
+                        <TextBlock Margin="15,0,0,10" TextWrapping="Wrap">
+                            Clear all measurements from the chart.
+                        </TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,10,0,5">Important:</TextBlock>
+                        <TextBlock Margin="15,0,0,5" TextWrapping="Wrap">• Tooltips appear AFTER selection is complete</TextBlock>
+                        <TextBlock Margin="15,0,0,5" TextWrapping="Wrap">• Measurements don't interfere with zoom/pan</TextBlock>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+
+            <!-- Search & Find Tab -->
+            <TabItem Header="Search &amp; Find">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel Margin="20">
+                        <TextBlock FontSize="16" FontWeight="Bold" Margin="0,0,0,10">Search &amp; Find</TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,5,0,2">• Find Value (Ctrl+F):</TextBlock>
+                        <TextBlock Margin="15,0,0,10" TextWrapping="Wrap">
+                            Search for specific values in the selected chart's signals.
+                        </TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,10,0,5">Query Syntax:</TextBlock>
+                        <TextBlock Margin="15,0,0,5" TextWrapping="Wrap" FontFamily="Consolas">• Exact: 100</TextBlock>
+                        <TextBlock Margin="15,0,0,5" TextWrapping="Wrap" FontFamily="Consolas">• Greater than: &gt;100</TextBlock>
+                        <TextBlock Margin="15,0,0,5" TextWrapping="Wrap" FontFamily="Consolas">• Less than: &lt;50</TextBlock>
+                        <TextBlock Margin="15,0,0,5" TextWrapping="Wrap" FontFamily="Consolas">• Find next: N:&gt;100</TextBlock>
+                        <TextBlock Margin="15,0,0,10" TextWrapping="Wrap" FontFamily="Consolas">• Find previous: P:&lt;20</TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,10,0,5">Visual Indicators:</TextBlock>
+                        <TextBlock Margin="15,0,0,5" TextWrapping="Wrap">• Red line: Current cursor position</TextBlock>
+                        <TextBlock Margin="15,0,0,5" TextWrapping="Wrap">• Blue line: Search result target</TextBlock>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+
+            <!-- Reference Lines Tab -->
+            <TabItem Header="Reference Lines">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel Margin="20">
+                        <TextBlock FontSize="16" FontWeight="Bold" Margin="0,0,0,10">Reference Lines</TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,5,0,2">• Manage Reference Lines:</TextBlock>
+                        <TextBlock Margin="15,0,0,10" TextWrapping="Wrap">
+                            Add, edit, or remove guide lines to help analyze data.
+                        </TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,5,0,2">• Horizontal Lines:</TextBlock>
+                        <TextBlock Margin="15,0,0,10" TextWrapping="Wrap">
+                            Fixed Y-value line that spans across the chart. Useful for marking thresholds or target values.
+                        </TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,5,0,2">• Vertical Lines:</TextBlock>
+                        <TextBlock Margin="15,0,0,10" TextWrapping="Wrap">
+                            Fixed X-index position that spans top to bottom. Useful for marking specific events or time points.
+                        </TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,5,0,2">• Customization:</TextBlock>
+                        <TextBlock Margin="15,0,0,10" TextWrapping="Wrap">
+                            Set custom name, color, thickness, and dashed/solid style for each line.
+                        </TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,5,0,2">• Per-axis Assignment:</TextBlock>
+                        <TextBlock Margin="15,0,0,10" TextWrapping="Wrap">
+                            Lines can follow either left or right Y-axis for multi-axis charts.
+                        </TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,10,0,5">Tips:</TextBlock>
+                        <TextBlock Margin="15,0,0,5" TextWrapping="Wrap">• If a line isn't visible, check if it's within the current axis range</TextBlock>
+                        <TextBlock Margin="15,0,0,5" TextWrapping="Wrap">• Automatic Y=0 reference lines are shown when 0 is in view</TextBlock>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+
+            <!-- States Tab -->
+            <TabItem Header="States &amp; Timeline">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel Margin="20">
+                        <TextBlock FontSize="16" FontWeight="Bold" Margin="0,0,0,10">States &amp; Timeline</TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,5,0,2">• Show States:</TextBlock>
+                        <TextBlock Margin="15,0,0,10" TextWrapping="Wrap">
+                            Toggle state display on/off in the charts and timeline.
+                        </TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,5,0,2">• State colors:</TextBlock>
+                        <TextBlock Margin="15,0,0,10" TextWrapping="Wrap">
+                            Each state has a unique color for easy identification.
+                        </TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,5,0,2">• State labels:</TextBlock>
+                        <TextBlock Margin="15,0,0,10" TextWrapping="Wrap">
+                            State names are shown in both the timeline bar and overlaid on charts.
+                        </TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,5,0,2">• States Transitions tab:</TextBlock>
+                        <TextBlock Margin="15,0,0,10" TextWrapping="Wrap">
+                            List of all state changes throughout the data with timestamps.
+                        </TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,5,0,2">• Double-click state event:</TextBlock>
+                        <TextBlock Margin="15,0,0,10" TextWrapping="Wrap">
+                            Jump directly to that time in the timeline.
+                        </TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,10,0,5">Tips:</TextBlock>
+                        <TextBlock Margin="15,0,0,5" TextWrapping="Wrap">• State colors are configurable in StateConfig</TextBlock>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+
+            <!-- Playback Tab -->
+            <TabItem Header="Playback">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel Margin="20">
+                        <TextBlock FontSize="16" FontWeight="Bold" Margin="0,0,0,10">Playback Controls</TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,5,0,2">• Play/Pause:</TextBlock>
+                        <TextBlock Margin="15,0,0,10" TextWrapping="Wrap">
+                            Animate data progression to see how signals change over time.
+                        </TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,5,0,2">• Stop:</TextBlock>
+                        <TextBlock Margin="15,0,0,10" TextWrapping="Wrap">
+                            Reset playback to the start of the current view.
+                        </TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,5,0,2">• Speed Control:</TextBlock>
+                        <TextBlock Margin="15,0,0,10" TextWrapping="Wrap">
+                            Control playback rate from x0.5 (slow motion) to x50 (fast forward).
+                        </TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,5,0,2">• Progressive mode:</TextBlock>
+                        <TextBlock Margin="15,0,0,10" TextWrapping="Wrap">
+                            Chart draws up to the current cursor position during playback.
+                        </TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,10,0,5">Time Range:</TextBlock>
+                        <TextBlock Margin="15,0,0,5" TextWrapping="Wrap">• Set Time Range: Limit analysis to specific period</TextBlock>
+                        <TextBlock Margin="15,0,0,5" TextWrapping="Wrap">• Applies to playback and searches</TextBlock>
+                        <TextBlock Margin="15,0,0,5" TextWrapping="Wrap">• Clear to restore full dataset</TextBlock>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+
+            <!-- Export & More Tab -->
+            <TabItem Header="Export &amp; More">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel Margin="20">
+                        <TextBlock FontSize="16" FontWeight="Bold" Margin="0,0,0,10">Export &amp; Capture</TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,5,0,2">• Export (💾):</TextBlock>
+                        <TextBlock Margin="15,0,0,10" TextWrapping="Wrap">
+                            Save chart data to CSV file for further analysis.
+                        </TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,5,0,2">• Snapshot (📷):</TextBlock>
+                        <TextBlock Margin="15,0,0,10" TextWrapping="Wrap">
+                            Capture the current chart view as a PNG image.
+                        </TextBlock>
+
+                        <TextBlock FontSize="16" FontWeight="Bold" Margin="0,20,0,10">Data Filtering</TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,5,0,2">• Category Filter:</TextBlock>
+                        <TextBlock Margin="15,0,0,5" TextWrapping="Wrap">Filter signals by type:</TextBlock>
+                        <TextBlock Margin="25,0,0,2">- All Signals</TextBlock>
+                        <TextBlock Margin="25,0,0,2">- Axis / Motion</TextBlock>
+                        <TextBlock Margin="25,0,0,2">- IO / Sensors</TextBlock>
+                        <TextBlock Margin="25,0,0,10">- States / Logic</TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,5,0,2">• Search box:</TextBlock>
+                        <TextBlock Margin="15,0,0,10" TextWrapping="Wrap">
+                            Filter signals by name with real-time search.
+                        </TextBlock>
+
+                        <TextBlock FontSize="16" FontWeight="Bold" Margin="0,20,0,10">Appearance</TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,5,0,2">• Dark Mode:</TextBlock>
+                        <TextBlock Margin="15,0,0,10" TextWrapping="Wrap">
+                            Toggle between light and dark themes for comfortable viewing.
+                        </TextBlock>
+
+                        <TextBlock FontWeight="Bold" Margin="0,5,0,2">• Modern Layout:</TextBlock>
+                        <TextBlock Margin="15,0,0,10" TextWrapping="Wrap">
+                            Card-based layout with multiple Y-axes support per chart.
+                        </TextBlock>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>
+
+        <!-- Footer -->
+        <Border Grid.Row="2" Background="#F5F5F5" Padding="15,10" BorderBrush="#E0E0E0" BorderThickness="0,1,0,0">
+            <Grid>
+                <TextBlock Text="Version 1.0 | Built with SkiaSharp &amp; WPF"
+                           Foreground="#666"
+                           VerticalAlignment="Center"/>
+                <Button Content="Close"
+                        HorizontalAlignment="Right"
+                        Padding="20,5"
+                        Click="Close_Click"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

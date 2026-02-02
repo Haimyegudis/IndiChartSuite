@@ -205,11 +205,12 @@
 
         <Grid Grid.Row="4" Margin="0,8,0,0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="280"/>
+                <ColumnDefinition x:Name="LeftPanelColumn" Width="280" MinWidth="50"/>
+                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Border Grid.Column="0" Background="White" Margin="5,0,0,8" CornerRadius="6" Effect="{StaticResource CardShadow}" Padding="5">
+            <Border x:Name="LeftPanelBorder" Grid.Column="0" Background="White" Margin="5,0,0,8" CornerRadius="6" Effect="{StaticResource CardShadow}" Padding="5">
                 <TabControl BorderThickness="0" Background="Transparent">
                     <TabControl.Resources>
                         <Style TargetType="TabItem">
@@ -254,16 +255,41 @@
                 </TabControl>
             </Border>
 
-            <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto" PreviewKeyDown="ChartsArea_PreviewKeyDown">
+            <!-- GridSplitter for left panel resize -->
+            <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Center" VerticalAlignment="Stretch"
+                          Background="#E5E7EB" Cursor="SizeWE" Margin="0,0,0,8"/>
+
+            <!-- Collapse/Expand button for left panel -->
+            <Button x:Name="CollapseButton" Grid.Column="1" Content="◀" Width="20" Height="60"
+                    VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,-10,0"
+                    Background="#6B7280" Foreground="White" FontSize="10" FontWeight="Bold"
+                    Click="ToggleLeftPanel_Click" ToolTip="Collapse/Expand Panel" Cursor="Hand"
+                    Panel.ZIndex="100">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="0,4,4,0" Padding="2">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#4B5563"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <ScrollViewer Grid.Column="2" VerticalScrollBarVisibility="Auto" PreviewKeyDown="ChartsArea_PreviewKeyDown">
                 <ItemsControl x:Name="ChartsContainer">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Border Style="{StaticResource ChartCardStyle}" MouseDown="ChartBorder_MouseDown">
-                                <Grid Height="180">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="28"/>
-                                        <RowDefinition Height="*"/>
-                                    </Grid.RowDefinitions>
+                            <StackPanel>
+                                <Border Style="{StaticResource ChartCardStyle}" MouseDown="ChartBorder_MouseDown">
+                                    <Grid Height="{Binding ChartHeight}">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="28"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
                                     <Border Grid.Row="0" Background="#F9FAFB" CornerRadius="6,6,0,0" Padding="8,0" BorderBrush="#E5E7EB" BorderThickness="0,0,0,1">
                                         <DockPanel LastChildFill="False">
                                             <TextBlock Text="{Binding Title}" FontWeight="Bold" FontSize="11" Foreground="#374151" VerticalAlignment="Center"/>
@@ -315,6 +341,17 @@
                                     </Grid>
                                 </Grid>
                             </Border>
+                            <!-- Resize Gripper for chart height -->
+                            <Border Height="8" Background="Transparent" Cursor="SizeNS"
+                                    Margin="5,0,10,5" CornerRadius="4"
+                                    MouseDown="ChartResizeGripper_MouseDown"
+                                    MouseMove="ChartResizeGripper_MouseMove"
+                                    MouseUp="ChartResizeGripper_MouseUp"
+                                    Tag="{Binding}">
+                                <Border Height="3" Width="40" Background="#D1D5DB" CornerRadius="2"
+                                        HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                            </StackPanel>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>

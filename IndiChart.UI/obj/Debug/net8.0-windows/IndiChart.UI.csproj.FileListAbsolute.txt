@@ -37,3 +37,12 @@ C:\Users\yegudish\source\repos\IndiChartSuite\IndiChart.UI\obj\Debug\net8.0-wind
 C:\Users\yegudish\source\repos\IndiChartSuite\IndiChart.UI\obj\Debug\net8.0-windows\IndiChart.UI.sourcelink.json
 C:\Users\yegudish\source\repos\IndiChartSuite\IndiChart.UI\obj\Debug\net8.0-windows\ReferenceLineManager.g.cs
 C:\Users\yegudish\source\repos\IndiChartSuite\IndiChart.UI\obj\Debug\net8.0-windows\ReferenceLineManager.baml
+C:\Users\yegudish\source\repos\IndiChartSuite\IndiChart.UI\obj\Debug\net8.0-windows\FindValueDialog.baml
+C:\Users\yegudish\source\repos\IndiChartSuite\IndiChart.UI\obj\Debug\net8.0-windows\HelpWindow.baml
+C:\Users\yegudish\source\repos\IndiChartSuite\IndiChart.UI\obj\Debug\net8.0-windows\FindValueDialog.g.cs
+C:\Users\yegudish\source\repos\IndiChartSuite\IndiChart.UI\obj\Debug\net8.0-windows\HelpWindow.g.cs
+C:\Users\yegudish\source\repos\IndiChartSuite\temp_build\IndiChart.UI.exe
+C:\Users\yegudish\source\repos\IndiChartSuite\temp_build\IndiChart.UI.deps.json
+C:\Users\yegudish\source\repos\IndiChartSuite\temp_build\IndiChart.UI.runtimeconfig.json
+C:\Users\yegudish\source\repos\IndiChartSuite\temp_build\IndiChart.UI.dll
+C:\Users\yegudish\source\repos\IndiChartSuite\temp_build\IndiChart.UI.pdb
