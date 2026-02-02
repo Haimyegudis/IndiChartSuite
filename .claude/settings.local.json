@@ -12,7 +12,11 @@
       "Bash(git config:*)",
       "Bash(git stash:*)",
       "Bash(taskkill:*)",
-      "Bash(powershell:*)"
+      "Bash(powershell:*)",
+      "Bash(du:*)",
+      "Bash(git gc:*)",
+      "Bash(git status:*)",
+      "Bash(git add:*)"
     ]
   }
 }

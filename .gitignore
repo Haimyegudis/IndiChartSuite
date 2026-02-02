@@ -1,0 +1,30 @@
+# Build output
+bin/
+obj/
+out/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userprefs
+*.sln.docstates
+
+# CSV data files
+CSV/
+
+# Rider
+.idea/
+
+# NuGet
+packages/
+
+# Temporary files
+*.tmp
+*.temp
+nul
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
